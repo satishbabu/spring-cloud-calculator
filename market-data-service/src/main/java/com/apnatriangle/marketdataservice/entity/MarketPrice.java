@@ -1,12 +1,19 @@
-package com.apnatriangle.marketdataservice;
+package com.apnatriangle.marketdataservice.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @Entity
 public class MarketPrice {
+    @Id
     String symbol;
+
     BigDecimal price;
+
+    protected MarketPrice() {
+
+    }
 
     public MarketPrice(String symbol, BigDecimal price) {
         this.symbol = symbol;

@@ -1,4 +1,7 @@
 package com.apnatriangle.marketdataservice.entity;
 
-public interface MarketPriceRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MarketPriceRepository extends JpaRepository<MarketPrice, String> {
+
 }
