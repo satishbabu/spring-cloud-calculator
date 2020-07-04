@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @RestController
@@ -16,10 +17,10 @@ public class StockPriceController {
     private MarketPriceRepository marketPriceRepository;
 
     @GetMapping("/price/{symbol}")
-    public MarketPrice currentPrice(@PathVariable String symbol) {
+    public BigDecimal currentPrice(@PathVariable String symbol) {
         Optional<MarketPrice> marketPrice = marketPriceRepository.findById(symbol);
         if (marketPrice.isPresent()) {
-            return marketPrice.get();
+            return marketPrice.get().getPrice();
         } else {
             throw new IllegalArgumentException("Symbol not found");
         }

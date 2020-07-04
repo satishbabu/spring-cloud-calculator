@@ -22,3 +22,8 @@ Also, I may add the Spring configuration server to hold the prorperties across e
 ## Development Plan
 
 I plan to build it in layers using git branches.  Imagine onion and the initial version will be core and every layer will add small functionality
+
+
+## Tie things together using RestClient
+Visti http://localhost:8080/calculatePrice/intl/100 to get the price for 100 intl stocks.  The url is of the format http://localhost:8080/calculatePrice/{symbol}/{quantity}
+
