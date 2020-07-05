@@ -15,6 +15,7 @@ Also, I may add the Spring configuration server to hold the prorperties across e
 | ------- | ---- |
 | Calculator | 8080 |
 | Market Data | 8090 |
+| Gateway | 8765 |
 
 
 
@@ -28,5 +29,10 @@ I plan to build it in layers using git branches.  Imagine onion and the initial 
 Add the JPA.  Uses H2 in memory database.  The data.sql inserts data afer creating H2 database.  Also, the H2 database is created automatically.
 
 ## Tie things together using RestClient (branch rest_client)
-Visti http://localhost:8080/calculatePrice/intl/100 to get the price for 100 intl stocks.  The url is of the format http://localhost:8080/calculatePrice/{symbol}/{quantity}
+Visti http://localhost:8080/calculatePrice/intl/100 to get the price for 100 intl shares.  The url is of the format http://localhost:8080/calculatePrice/{symbol}/{quantity}
 
+## add_feign_proxy
+Calling service using RestClient is ugly.  Replaced it with OpenFeign from Netflix.  All we need to do is create an interface and spring cloud will create the implementation for calling the microservice.
+
+## add_zuul_api_gateway
+Added Zuul API Gateway.  Updated Proxy in Calculator to use API gateway when it calls Market Data Service.  Added a filter in gateway to log all calls.  Visit http://localhost:8765/calculator-service/calculatePrice/intl/100 to get price for 100 intl shares.  The url is of the format http://localhost:8080/{application-name}/calculatePrice/{symbol}/{quantity}

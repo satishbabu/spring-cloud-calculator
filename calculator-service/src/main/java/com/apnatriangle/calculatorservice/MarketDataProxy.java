@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
 
-@FeignClient(name = "market-data-service", url = "localhost:8090")
+@FeignClient(name = "api-gateway-server", url = "localhost:8765/market-data-service")
 public interface MarketDataProxy {
 
     @GetMapping("/price/{symbol}")
