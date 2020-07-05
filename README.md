@@ -39,3 +39,8 @@ Added Zuul API Gateway.  Updated Proxy in Calculator to use API gateway when it 
 
 ## add_sleuth_distributed_tracing
 Added Sleuth to all 3 projects.  Added log statement where missing.  An ID is generated at the api gate way and it is propagated to calculator service and market data service.  Visit http://localhost:8765/calculator-service/calculatePrice/intl/100 and check out the logs on all 3 services.  They all will have same span id.
+
+
+## add_zipkin
+Good talk on Zipkin by Adrian Cole (@adrianfcole) https://www.youtube.com/watch?v=f9J1Av8rwCE.  Advice is start small, fail fast avoid using plugins that you dont need/know.
+Download zipkin from maven using URL https://search.maven.org/remote_content?g=io.zipkin.java&a=zipkin-server&v=LATEST&c=exec.  Then launch it using java -jar zipkin-server-xxx.jar
