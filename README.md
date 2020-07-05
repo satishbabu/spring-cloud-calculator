@@ -24,6 +24,9 @@ Also, I may add the Spring configuration server to hold the prorperties across e
 I plan to build it in layers using git branches.  Imagine onion and the initial version will be core and every layer will add small functionality
 
 
-## Tie things together using RestClient
+## Added JPA to market data service (branch add_jpa_to_market_data)
+Add the JPA.  Uses H2 in memory database.  The data.sql inserts data afer creating H2 database.  Also, the H2 database is created automatically.
+
+## Tie things together using RestClient (branch rest_client)
 Visti http://localhost:8080/calculatePrice/intl/100 to get the price for 100 intl stocks.  The url is of the format http://localhost:8080/calculatePrice/{symbol}/{quantity}
 
