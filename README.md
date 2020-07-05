@@ -36,3 +36,6 @@ Calling service using RestClient is ugly.  Replaced it with OpenFeign from Netfl
 
 ## add_zuul_api_gateway
 Added Zuul API Gateway.  Updated Proxy in Calculator to use API gateway when it calls Market Data Service.  Added a filter in gateway to log all calls.  Visit http://localhost:8765/calculator-service/calculatePrice/intl/100 to get price for 100 intl shares.  The url is of the format http://localhost:8080/{application-name}/calculatePrice/{symbol}/{quantity}
+
+## add_sleuth_distributed_tracing
+Added Sleuth to all 3 projects.  Added log statement where missing.  An ID is generated at the api gate way and it is propagated to calculator service and market data service.  Visit http://localhost:8765/calculator-service/calculatePrice/intl/100 and check out the logs on all 3 services.  They all will have same span id.
