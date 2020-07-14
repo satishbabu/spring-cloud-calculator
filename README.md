@@ -16,6 +16,7 @@ Also, I may add the Spring configuration server to hold the prorperties across e
 | Calculator | 8080 |
 | Market Data | 8090 |
 | Gateway | 8765 |
+| Zipkin | 9411 |
 
 
 
@@ -42,5 +43,8 @@ Added Sleuth to all 3 projects.  Added log statement where missing.  An ID is ge
 
 
 ## add_zipkin
-Good talk on Zipkin by Adrian Cole (@adrianfcole) https://www.youtube.com/watch?v=f9J1Av8rwCE.  Advice is start small, fail fast avoid using plugins that you dont need/know.
-Download zipkin from maven using URL https://search.maven.org/remote_content?g=io.zipkin.java&a=zipkin-server&v=LATEST&c=exec.  Then launch it using java -jar zipkin-server-xxx.jar
+Updated the pom.xml files on all 3 projects to include the zipkin libraries and springboot takes care of rest.  The spring.application.name was in-correct and it was corrected so that sleuth start writing the application name into logs.
+
+Download zipkin from maven using URL https://search.maven.org/remote_content?g=io.zipkin.java&a=zipkin-server&v=LATEST&c=exec.  Then start zipkin server using java -jar zipkin-server-xxx.jar.  Visit http://localhost:9411/zipkin/ and click on Find Traces.  If Traces doesn't show up then restart services of all 3 services so that they can find zipkin and get ready to send information over.
+
+Good talk on Zipkin by Adrian Cole (@adrianfcole) https://www.youtube.com/watch?v=f9J1Av8rwCE.  Advice is start small, fail fast avoid using plugins that you dont need.
