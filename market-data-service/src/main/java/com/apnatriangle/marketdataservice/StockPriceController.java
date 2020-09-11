@@ -2,6 +2,7 @@ package com.apnatriangle.marketdataservice;
 
 import com.apnatriangle.marketdataservice.entity.MarketPrice;
 import com.apnatriangle.marketdataservice.entity.MarketPriceRepository;
+import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,9 @@ public class StockPriceController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private MarketPriceRepository marketPriceRepository;
+    MarketPriceRepository marketPriceRepository;
 
+    @Timed(value = "currentSymbolPrice")
     @GetMapping("/price/{symbol}")
     public BigDecimal currentPrice(@PathVariable String symbol) {
         logger.info("Market Price for Symbol: {}", symbol);
@@ -29,4 +31,6 @@ public class StockPriceController {
             throw new IllegalArgumentException("Symbol not found");
         }
     }
+
+
 }
